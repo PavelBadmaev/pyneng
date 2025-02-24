@@ -21,10 +21,24 @@ ospf_route. Значения из строки ospf_route надо получи�
 """
 
 ospf_route = "      10.0.24.0/24 [110/41] via 10.0.13.3, 3d18h, FastEthernet0/0"
+
+ospf_route1 = ospf_route.strip().replace(',', '').split()
+ospf_route1.remove('via')
+
+prefix = ospf_route1[0]
+ad_metric = ospf_route1[1].strip('[]')
+next_hop = ospf_route1[2]
+last_update = ospf_route1[3]
+outbound_interface = ospf_route1[4]
+
+
 template = """
 Prefix                {}
 AD/Metric             {}
 Next-Hop              {}
 Last update           {}
 Outbound Interface    {}
-"""
+""".format(prefix, ad_metric, next_hop, last_update, outbound_interface)
+
+
+print(template)
