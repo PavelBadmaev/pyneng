@@ -12,3 +12,16 @@
 
 Ограничение: Все задания надо выполнять используя только пройденные темы.
 """
+ip_add = input().split('.')
+
+if 0 < int(ip_add[0]) < 224:
+    print('unicast')
+elif 223 < int(ip_add[0]) < 240:
+    print('multicast')
+elif int(ip_add[0]) == int(ip_add[1]) == int(ip_add[2]) == int(ip_add[3]) == 255:
+    print('local broadcast')
+elif int(ip_add[0]) == int(ip_add[1]) == int(ip_add[2]) == int(ip_add[3]) == 0:
+    print('unassigned')
+else:
+    print('unused')
+
