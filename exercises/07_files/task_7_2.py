@@ -39,3 +39,11 @@ interface Ethernet0/3
 ...
 
 """
+with open('config_sw1.txt', 'r') as f:
+    for line in f:
+        # Убираем символ новой строки
+        line = line.rstrip('\n')
+        # Если после удаления начальных пробелов строка начинается с '!', пропускаем её
+        if line.lstrip().startswith('!'):
+            continue
+        print(line)

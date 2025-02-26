@@ -20,3 +20,15 @@
 Ограничение: Все задания надо выполнять используя только пройденные темы.
 
 """
+
+with open('CAM_table.txt') as f:
+    for line in f:
+        line_list = line.split()
+        # Обрабатываем только строки, где первый элемент – номер VLAN (состоит только из цифр)
+        if line_list and line_list[0].isdigit():
+            vlan = line_list[0]
+            mac = line_list[1]
+            interface = line_list[3]
+            # Выводим данные в нужном формате: VLAN (лево-выравнено, ширина 8 символов),
+            # MAC (ширина 20 символов) и интерфейс
+            print("{:<8}{:<20}{}".format(vlan, mac, interface))
